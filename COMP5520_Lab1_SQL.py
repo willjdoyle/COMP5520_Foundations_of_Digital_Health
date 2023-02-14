@@ -117,7 +117,7 @@ LIMIT = "1000"
 cuiList = np.array(run_query_return(cur, "SELECT DISTINCT CUI1 FROM MRREL LIMIT "+LIMIT+";")).flatten() 
 
 # offset the starting point (to make running this program multiple times easier)
-START = 210
+START = 100
 cuiList = cuiList[START:]
 
 # -------------------
@@ -149,7 +149,7 @@ for i in range(len(cuiList)): # iterate through every CUI, within the limit defi
 				for k in range(len(chain)): # iterate thru every chain
 					print("\t\t\t(",k+1," / ",len(chain),")")
 					flag = 0 # flips to 1 if circle has been found
-					if(len(chain[k]) >= 3): # ensure minimum chain length of 3
+					if(len(chain[k]) >= 4): # ensure minimum chain length of 3
 						for l in range(2, len(chain[k])):
 							if(chain[k][l] == chain[k][0]): # if element in the chain is equal to starting element
 								raise MATCH # no need to check rest of the chain once match is found, break out and print
